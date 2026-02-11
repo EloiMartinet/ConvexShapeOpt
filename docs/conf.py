@@ -37,6 +37,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../src'))
 
+
 # Mock imports
 autodoc_mock_imports = [
     "torch",
