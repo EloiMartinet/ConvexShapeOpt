@@ -24,9 +24,6 @@ cd ConvexShapeOpt
 ```
 
 ### 3. Install dependencies
-```bash
-pip install matplotlib numpy pyvista fiblat
-```
 
 For **PyTorch**, please consult the official installation guide:  
 https://pytorch.org/get-started/locally/
@@ -35,7 +32,7 @@ https://pytorch.org/get-started/locally/
 > CUDA is recommended for running the Blaschke–Santalò scripts.  
 > The example scripts (simple shape optimization problems) run well on CPU.
 
-Finally, install the package in editable mode:
+Then, install the package in editable mode:
 ```bash
 pip install -e .
 ```

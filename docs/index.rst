@@ -12,5 +12,5 @@ Documentation for the `ConvexShapeOpt <https://github.com/EloiMartinet/ConvexSha
    :maxdepth: 2
    :caption: Contents:
 
-   api
-   tutorials
+   api/index
+   tutorials/index

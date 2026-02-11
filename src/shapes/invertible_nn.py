@@ -373,7 +373,7 @@ class ConvexDiffeo(nn.Module):
 
     def integral_mean_curvature(self, n_points=50000):
         """
-        Compute :math:`\\int_{\\partial \Omega} H \, dS` via change of variable
+        Compute :math:`\\int_{\\partial \\Omega} H \, dS` via change of variable
 
         Returns
         -------
@@ -394,7 +394,7 @@ class ConvexDiffeo(nn.Module):
 
     def willmore_energy(self, n_points=50000):
         """
-        Compute the Willmore energy :math:`\\int_{\\partial \Omega} H^2 \, dS`
+        Compute the Willmore energy :math:`\\int_{\\partial \\Omega} H^2 \, dS`
 
         Returns
         -------
