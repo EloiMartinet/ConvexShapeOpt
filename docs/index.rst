@@ -6,11 +6,12 @@
 ConvexShapeOpt documentation
 ============================
 
-Documentation for the `ConvexShapeOpt <https://github.com/EloiMartinet/ConvexShapeOpt>` library. Please visit the GitHub for more information.
+I wanted to put a link in my index.rst like that: Documentation for the `ConvexShapeOpt <https://github.com/EloiMartinet/ConvexShapeOpt>`_ library. Please visit the GitHub for more information.
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   api/index
+   api
    tutorials/index
