@@ -11,7 +11,29 @@ The library is implemented almost entirely in **PyTorch**, with only a few light
 
 ---
 
+## :boom: Notebooks
+
+In order to quickly see the capabilities of the library, you can directly copy and execute the following example notebooks (by increasing level of complexity):
+- [Simulation of the isoperimetric problem](https://colab.research.google.com/drive/1IHtUUCk31hefELOGxjswUp08wRDh-bgy?usp=drive_link)
+- [Minimization of Dirichlet eigenvalues](https://colab.research.google.com/drive/1zHei5Hz2LTWHSSRhA1oY19PLsYXCsvY3?usp=drive_link)
+- [Simple Blaschke-Santalò diagram](https://colab.research.google.com/drive/1aokh44CqfrN53Rvl_zplbcMXPF9bvDF3?usp=drive_link)
+
+Link to the folder: https://drive.google.com/drive/folders/12-tWL7n0nP48uCksgxboSXp1QX3xLcwN?usp=sharing
+
+You can find the same scripts in the `examples/`folder.
+
+You too can also use this library directly in Google Collab by executing
+```bash
+!pip install git+https://github.com/EloiMartinet/ConvexShapeOpt.git
+```
+in the first cell.
+
+
+---
+
 ## :rocket: Installation
+
+For local installation, please follow the following steps.
 
 ### 1. Clone the repository
 ```bash
@@ -25,8 +47,8 @@ cd ConvexShapeOpt
 
 ### 3. Install dependencies
 
-For **PyTorch**, please consult the official installation guide:  
-https://pytorch.org/get-started/locally/
+For **PyTorch**, please consult the official [installation guide](https://pytorch.org/get-started/locally/).
+
 
 > **Note**  
 > CUDA is recommended for running the Blaschke–Santalò scripts.  

@@ -13,5 +13,5 @@ I wanted to put a link in my index.rst like that: Documentation for the `ConvexS
    :maxdepth: 2
    :caption: Contents:
 
-   api
-   tutorials
+   api/index
+   tutorials/index
