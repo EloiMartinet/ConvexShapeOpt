@@ -11,7 +11,7 @@ The library is implemented almost entirely in **PyTorch**, with only a few light
 
 ---
 
-## Installation
+## :rocket: Installation
 
 ### 1. Clone the repository
 ```bash
@@ -42,7 +42,7 @@ pip install -e .
 
 ---
 
-## Usage
+## :computer_mouse: Usage
 
 ### Example: Isoperimetric Problem
 
@@ -108,7 +108,7 @@ http://localhost:8000/plot_diagram.html?folder=res/APW_2d/shapes
 
 ---
 
-## Code Structure
+## :clipboard: Code Structure
 
 The core of the library is located in:
 ```
@@ -156,14 +156,14 @@ Please refer to the paper for further details.
 
 ---
 
-## Documentation
+## :open_book: Documentation
 
 Documentation is currently minimal.  
 Please refer to the paper and the example scripts for guidance.
 
 ---
 
-## Citation
+## :bookmark: Citation
 
 If you use this code, please cite:
 ```
