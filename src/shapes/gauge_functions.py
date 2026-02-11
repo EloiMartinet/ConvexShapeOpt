@@ -9,26 +9,30 @@ class LSEGauge(nn.Module):
     This module represents a smooth approximation of the gauge
     (Minkowski functional) of a convex polygon or polytope.
 
-    Given a convex set Ω ⊂ ℝᵈ containing the origin, its gauge is:
+    Given a convex set :math:`\\Omega \\subset \\mathbb{R}^d` containing the origin, its gauge is
 
-        γ_Ω(x) = inf { t > 0 : x ∈ tΩ }
+    .. math::
+
+        \\gamma_\\Omega(x) = \\inf \\{ t > 0 : x \\in t \\Omega \\}
 
     This implementation approximates the gauge using a
     log-sum-exp (soft maximum) of linear functionals, yielding
     a smooth, positively 1-homogeneous, convex function.
 
-    The functional form is:
+    The functional form is
 
-        γ(x) ≈ ||x|| · (1/β) · log ∑ₖ exp(⟨wₖ, x / ||x||⟩)
+    .. math::
 
-    where:
-        - {wₖ} are learned directions
-        - β > 0 controls the sharpness of the approximation
+        \\gamma(x) = \\|x\\| \\cdot \\frac{1}{\\beta} \\log \\sum_k \\exp\\Big(\\langle w_k, x / \\|x\\| \\rangle\\Big)
+
+    where
+    - :math:`\\{ w_k \\}` are learned directions
+    - :math:`\\beta > 0` controls the sharpness of the approximation
 
     Parameters
     ----------
     input_size : int, optional
-        Ambient dimension d.
+        Ambient dimension :math:`d`.
     n_unit : int, optional
         Number of linear directions (facets).
     beta : float, optional
@@ -60,11 +64,6 @@ class LSEGauge(nn.Module):
         """
         Evaluate the smoothed gauge function.
 
-        The input is decomposed into direction and magnitude
-        to enforce positive 1-homogeneity:
-
-            γ(λx) = λ γ(x),   λ ≥ 0
-
         Parameters
         ----------
         x : torch.Tensor, shape (B, d)
@@ -73,7 +72,6 @@ class LSEGauge(nn.Module):
         Returns
         -------
         torch.Tensor, shape (B, 1)
-            Gauge values γ(x).
         """
         # Euclidean norm ||x||
         x_norm = torch.norm(x, dim=-1, keepdim=True)

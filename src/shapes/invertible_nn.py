@@ -12,12 +12,16 @@ class ConvexDiffeo(nn.Module):
 
     This class represents a smooth diffeomorphism
 
-        φ : B(0, 1) ⊂ ℝᵈ → Ω ⊂ ℝᵈ
+    .. math::
 
-    mapping the unit ball onto a convex domain Ω.
-    The map is defined via a learned convex gauge function G:
+        \\varphi : B(0, 1) \\subset \\mathbb{R}^d \\longrightarrow \\Omega \\subset \\mathbb{R}^d
 
-        φ(x) = x · ||x|| / G(x)
+    mapping the unit ball onto a convex domain :math:`\\Omega`.
+    The map is defined via a learned convex gauge function :math:`G`:
+
+    .. math::
+
+        \\varphi(x) = \\frac{x \\, \\|x\\|}{G(x)}
 
     Optionally, symmetry constraints can be enforced by averaging
     the gauge over a finite symmetry group.
@@ -27,11 +31,11 @@ class ConvexDiffeo(nn.Module):
     mesh_length : optional
         Reserved for future discretization / meshing purposes.
     input_size : int
-        Ambient dimension d.
+        Ambient dimension :math:`d`.
     n_unit : int
         Number of hidden units in the convex gauge network.
     symmetries : iterable of callables, optional
-        Group actions g(x) enforcing symmetry through averaging.
+        Group actions :math:`g(x)` enforcing symmetry through averaging.
     """
 
     def __init__(self, input_size=2, n_unit=50, symmetries=None):
@@ -53,19 +57,19 @@ class ConvexDiffeo(nn.Module):
 
     def forward(self, x, eps=1e-12):
         """
-        Evaluate the diffeomorphism φ(x).
+        Evaluate the diffeomorphism :math:`\\varphi(x)`.
 
         Parameters
         ----------
-        x : torch.Tensor, shape (B, d)
-            Points in the unit ball.
-        eps : float
+        x : torch.Tensor
+            Shape ``(B, d)``. Points in the unit ball.
+        eps : float, optional
             Small stabilization constant to avoid division by zero.
 
         Returns
         -------
-        torch.Tensor, shape (B, d)
-            Points in the target convex domain Ω.
+        torch.Tensor
+            Shape ``(B, d)``. Points in the target convex domain :math:`\\Omega`.
         """
         norm = torch.norm(x, dim=-1, keepdim=True)
 
@@ -180,16 +184,17 @@ class ConvexDiffeo(nn.Module):
 
     def jacobian(self, x):
         """
-        Compute the Jacobian matrix Dφ(x).
+        Compute the Jacobian matrix :math:`D\\varphi(x)`.
 
         Parameters
         ----------
-        x : torch.Tensor, shape (B, d)
+        x : torch.Tensor
+            Shape ``(B, d)``.
 
         Returns
         -------
-        torch.Tensor, shape (B, d, d)
-            Jacobian matrices evaluated at x.
+        torch.Tensor
+            Shape ``(B, d, d)``. Jacobian matrices evaluated at :math:`x`.
         """
         def f_single(xi):
             return self.forward(xi.unsqueeze(0)).squeeze(0)
@@ -201,7 +206,7 @@ class ConvexDiffeo(nn.Module):
         Compute the cofactor (adjugate) matrix of the Jacobian.
 
         This matrix naturally appears in surface measure
-        transformations under φ.
+        transformations under :math:`\\varphi`.
 
         Returns
         -------
@@ -217,7 +222,7 @@ class ConvexDiffeo(nn.Module):
         """
         Regularizer preventing Jacobian degeneracy.
 
-        Returns the maximum condition number of Dφ(x)
+        Returns the maximum condition number of :math:`D\\varphi(x)`
         over sampled points on the sphere.
 
         Returns
@@ -234,15 +239,18 @@ class ConvexDiffeo(nn.Module):
 
     def volume(self, n_points=50000):
         """
-        Monte Carlo estimate of the volume |Ω|.
+        Estimate of the volume :math:`|\\Omega|`.
 
         Uses the change-of-variables formula:
 
-            |Ω| = ∫_B |det Dφ(x)| dx
+        .. math::
+
+            |\\Omega| = \\int_{B} \\left| \\det D\\varphi(x) \\right| \\, \\mathrm{d}x
 
         Returns
         -------
-        torch.Tensor, shape (1,)
+        torch.Tensor
+            Shape ``(1,)``.
         """
         x = self.sample_ball(n_points)
         det = torch.abs(torch.linalg.det(self.jacobian(x)))
@@ -252,7 +260,7 @@ class ConvexDiffeo(nn.Module):
 
     def perimeter(self, n_points=50000):
         """
-        Monte Carlo estimate of the surface area |∂Ω|.
+        Estimate of the surface area :math:`|\\partial \\Omega|`.
 
         Returns
         -------
@@ -269,7 +277,7 @@ class ConvexDiffeo(nn.Module):
 
     def center_of_gravity(self, n_points=50000):
         """
-        Compute the center of gravity of Ω.
+        Compute the center of gravity of :math:`\\Omega`.
 
         Returns
         -------
@@ -286,7 +294,7 @@ class ConvexDiffeo(nn.Module):
 
     def moment_of_inertia(self, n_points=50000):
         """
-        Compute the scalar moment of inertia of Ω
+        Compute the scalar moment of inertia of :math:`\\Omega`
         with respect to its center of gravity.
 
         Returns
@@ -309,8 +317,8 @@ class ConvexDiffeo(nn.Module):
 
     def normal(self, x):
         """
-        Compute the outward unit normal at φ(x),
-        where x lies on the unit sphere.
+        Compute the outward unit normal at :math:`\\varphi(x)`,
+        where :math:`x` lies on the unit sphere.
 
         Parameters
         ----------
@@ -331,7 +339,7 @@ class ConvexDiffeo(nn.Module):
 
     def mean_curvature(self, x):
         """
-        Compute the mean curvature H at φ(x).
+        Compute the mean curvature :math:`H` at :math:`\\varphi(x)`.
 
         Parameters
         ----------
@@ -365,11 +373,12 @@ class ConvexDiffeo(nn.Module):
 
     def integral_mean_curvature(self, n_points=50000):
         """
-        Compute ∫_{∂Ω} H dS via Monte Carlo integration.
+        Compute :math:`\int_{\partial \Omega} H \, dS` via change of variable
 
         Returns
         -------
-        torch.Tensor, shape (1,)
+        torch.Tensor
+            Shape ``(1,)``.
         """
         B = self.dim
         x = self.sample_sphere(n_points, requires_grad=True)
@@ -385,9 +394,7 @@ class ConvexDiffeo(nn.Module):
 
     def willmore_energy(self, n_points=50000):
         """
-        Compute the Willmore energy:
-
-            ∫_{∂Ω} H² dS
+        Compute the Willmore energy :math:`\int_{\partial \Omega} H^2 \, dS`
 
         Returns
         -------
@@ -414,24 +421,33 @@ class ConvexDiffeo(nn.Module):
         """
         Fundamental solution of the Laplacian.
 
-        Constructs the matrix:
-            [ φ(x_i - y_j) ]_{i,j}
+        Constructs the matrix
 
-        where φ is the fundamental solution of the Laplacian in ℝᵈ:
-            - d = 2 : φ(r) = -log|r|
-            - d ≥ 3 : φ(r) = |r|^{2-d}
+        .. math::
+
+            \\left[ \\varphi(x_i - y_j) \\right]_{i,j}
+
+        where :math:`\\varphi` is the fundamental solution of the Laplacian in :math:`\\mathbb{R}^d`:
+
+        .. math::
+
+            \\varphi(r) =
+            \\begin{cases}
+            -\\log |r|, & d = 2 \\\\
+            |r|^{2-d}, & d \\ge 3
+            \\end{cases}
 
         Parameters
         ----------
-        x : torch.Tensor, shape (N_x, d)
-            Evaluation points.
-        y : torch.Tensor, shape (N_y, d)
-            Source points.
+        x : torch.Tensor
+            Shape ``(N_x, d)``. Evaluation points.
+        y : torch.Tensor
+            Shape ``(N_y, d)``. Source points.
 
         Returns
         -------
-        torch.Tensor, shape (N_x, N_y)
-            Pairwise evaluations of φ(x_i - y_j).
+        torch.Tensor
+            Shape ``(N_x, N_y)``. Pairwise evaluations of :math:`\\varphi(x_i - y_j)`.
         """
         dim = x.shape[1]
 
@@ -448,19 +464,25 @@ class ConvexDiffeo(nn.Module):
 
     def grad_psi(self, x, y):
         """
-        Gradient of the fundamental solution with respect to x.
+        Gradient of the fundamental solution with respect to :math:`x`.
 
-        Computes:
-            ∇_x φ(x_i - y_j)
+        Computes
+
+        .. math::
+
+            \\nabla_x \\varphi(x_i - y_j)
 
         Parameters
         ----------
-        x : torch.Tensor, shape (N_x, d)
-        y : torch.Tensor, shape (N_y, d)
+        x : torch.Tensor
+            Shape ``(N_x, d)``.
+        y : torch.Tensor
+            Shape ``(N_y, d)``.
 
         Returns
         -------
-        torch.Tensor, shape (N_x, N_y, d)
+        torch.Tensor
+            Shape ``(N_x, N_y, d)``.
         """
         dim = x.shape[1]
 
@@ -485,20 +507,27 @@ class ConvexDiffeo(nn.Module):
         This function mimics the behavior of LAPACK's GELSD
         while remaining compatible with CUDA.
 
-        Solves:
-            min ||Ax - b||₂
+        Solves the problem
+
+        .. math::
+
+            \\min \\|A x - b\\|_2
+
         and returns the minimum-norm solution.
 
         Parameters
         ----------
-        A : torch.Tensor, shape (M, N)
-        b : torch.Tensor, shape (M,) or (M, K)
+        A : torch.Tensor
+            Shape ``(M, N)``.
+        b : torch.Tensor
+            Shape ``(M,)`` or ``(M, K)``.
         rcond : float
             Relative cutoff for small singular values.
 
         Returns
         -------
-        torch.Tensor, shape (N,) or (N, K)
+        torch.Tensor
+            Shape ``(N,)`` or ``(N, K)``.
         """
         if b.ndim == 1:
             b = b[:, None]
@@ -577,15 +606,21 @@ class ConvexDiffeo(nn.Module):
         """
         Compute torsional rigidity for fixed parameters.
 
-        Solves the Poisson problem:
-            -Δu = 1  in Ω
-             u = 0  on ∂Ω
+        Solves the Poisson problem
+
+        .. math::
+
+            \\begin{cases}
+            -\\Delta u = 1 & \\text{in } \\Omega, \\\\
+            u = 0 & \\text{on } \\partial\\Omega
+            \\end{cases}
 
         using a boundary collocation method with Green functions.
 
         Returns
         -------
-        torsion : torch.Tensor, shape (1,)
+        torsion : torch.Tensor
+            Shape ``(1,)``.
         rel_err : torch.Tensor
             Relative boundary error.
         """
@@ -652,7 +687,7 @@ class ConvexDiffeo(nn.Module):
 
     def rbf(self, x, y, eps=1.0, rbf="thin_plate"):
         """
-        Evaluate radial basis functions φ(|x - y|).
+        Evaluate radial basis functions :math:`\\varphi(|x - y|)`.
 
         Supports several kernels:
         - Gaussian
@@ -733,11 +768,7 @@ class ConvexDiffeo(nn.Module):
 
     def generalized_sym_eig(self, A, M, k=None, eps_jitter=1e-12, return_eigvecs=True):
         """
-        Solve the generalized symmetric eigenproblem:
-
-            A c = λ M c
-
-        using Cholesky reduction.
+        Solve the generalized symmetric eigenproblem :math:`Ax = \\lambda M x` using Cholesky reduction.
 
         Eigenvectors are normalized in the M-inner product.
 
@@ -775,13 +806,16 @@ class ConvexDiffeo(nn.Module):
 
     def evaluate_rbf_function(self, x_eval, sources, coeffs, eps=1.0, rbf="thin_plate"):
         """
-        Evaluate an RBF expansion:
+        Evaluate an RBF expansion
 
-            u(x) = Σ_j c_j φ(x - y_j)
+        .. math::
+
+            u(x) = \\sum_j c_j \\varphi(x - y_j)
 
         Returns
         -------
-        torch.Tensor, shape (N_eval,)
+        torch.Tensor
+            Shape ``(N_eval,)``.
         """
         Phi = self.rbf(x_eval, sources, eps=eps, rbf=rbf)
         return Phi @ coeffs
@@ -796,7 +830,7 @@ class ConvexDiffeo(nn.Module):
         normalize=False,
     ):
         """
-        Compute Neumann Laplacian eigenvalues on Ω.
+        Compute Neumann Laplacian eigenvalues on :math:`\\Omega`.
 
         Returns
         -------
@@ -856,7 +890,7 @@ class ConvexDiffeo(nn.Module):
         bd_penalization=1e5
     ):
         """
-        Compute Dirichlet Laplacian eigenvalues on Ω.
+        Compute Dirichlet Laplacian eigenvalues on :math:`\\Omega`.
 
         Returns
         -------

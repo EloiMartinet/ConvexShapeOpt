@@ -1,0 +1,13 @@
+API Reference
+=============
+
+shapes modules
+--------------
+
+.. toctree::
+   :maxdepth: 1
+
+   api/invertible_nn
+   api/gauge_functions
+   api/plot_utils
+   api/repulsion_energy

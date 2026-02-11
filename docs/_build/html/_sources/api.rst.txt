@@ -1,0 +1,28 @@
+API Reference
+=============
+
+shapes modules
+--------------
+
+.. toctree::
+   :maxdepth: 2
+
+.. automodule:: shapes.invertible_nn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: shapes.gauge_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: shapes.plot_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+.. automodule:: shapes.repulsive_energy
+   :members:
+   :undoc-members:
+   :show-inheritance:

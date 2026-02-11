@@ -1,0 +1,237 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shapes.plot_utils &mdash; ConvexShapeOpt  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shapes.repulsion_energy" href="repulsion_energy.html" />
+    <link rel="prev" title="shapes.gauge_functions" href="gauge_functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ConvexShapeOpt
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#shapes-modules">shapes modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="invertible_nn.html">shapes.invertible_nn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gauge_functions.html">shapes.gauge_functions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shapes.plot_utils</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#shapes.plot_utils.plot_all_shapes"><code class="docutils literal notranslate"><span class="pre">plot_all_shapes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shapes.plot_utils.plot_diagram"><code class="docutils literal notranslate"><span class="pre">plot_diagram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shapes.plot_utils.plot_shape"><code class="docutils literal notranslate"><span class="pre">plot_shape()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shapes.plot_utils.plot_shape_2d"><code class="docutils literal notranslate"><span class="pre">plot_shape_2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shapes.plot_utils.plot_shape_3d"><code class="docutils literal notranslate"><span class="pre">plot_shape_3d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shapes.plot_utils.plot_shape_3d_movie"><code class="docutils literal notranslate"><span class="pre">plot_shape_3d_movie()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="repulsion_energy.html">shapes.repulsion_energy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ConvexShapeOpt</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shapes.plot_utils</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/plot_utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-shapes.plot_utils">
+<span id="shapes-plot-utils"></span><h1>shapes.plot_utils<a class="headerlink" href="#module-shapes.plot_utils" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="shapes.plot_utils.plot_all_shapes">
+<span class="sig-prename descclassname"><span class="pre">shapes.plot_utils.</span></span><span class="sig-name descname"><span class="pre">plot_all_shapes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_meshes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/plot_utils.html#plot_all_shapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.plot_utils.plot_all_shapes" title="Link to this definition"></a></dt>
+<dd><p>Plot a diagram and a collection of shapes generated by ConvexDiffeo models.</p>
+<p>This function:
+- Saves each model to disk
+- Plots the corresponding shape
+- Generates a CSV file mapping diagram points to shape images</p>
+<dl class="simple">
+<dt>The CSV file has columns:</dt><dd><p>img_src, x, y</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>models</strong> (<em>list</em><em>[</em><a class="reference internal" href="invertible_nn.html#shapes.invertible_nn.ConvexDiffeo" title="shapes.invertible_nn.ConvexDiffeo"><em>ConvexDiffeo</em></a><em>]</em>) – List of trained models defining shapes.</p></li>
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>N</em><em>, </em><em>2</em><em>)</em>) – Diagram coordinates associated with each model.</p></li>
+<li><p><strong>out_folder</strong> (<em>str</em>) – Output directory where plots, models, and CSV are saved.</p></li>
+<li><p><strong>plot_meshes</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, also plot a finite-element mesh of the 2D shape.</p></li>
+<li><p><strong>video</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True, generate rotating 3D videos instead of static images.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shapes.plot_utils.plot_diagram">
+<span class="sig-prename descclassname"><span class="pre">shapes.plot_utils.</span></span><span class="sig-name descname"><span class="pre">plot_diagram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cool_r'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/plot_utils.html#plot_diagram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.plot_utils.plot_diagram" title="Link to this definition"></a></dt>
+<dd><p>Plot a 2D diagram of points.</p>
+<p>Intended for visualizing parameter spaces or embeddings
+associated with shape collections.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em> (</em><em>N</em><em>, </em><em>2</em><em>)</em>) – Point coordinates.</p></li>
+<li><p><strong>output</strong> (<em>str</em>) – Path where the image is saved.</p></li>
+<li><p><strong>xlim</strong> (<em>tuple</em><em>, </em><em>optional</em>) – X-axis limits.</p></li>
+<li><p><strong>ylim</strong> (<em>tuple</em><em>, </em><em>optional</em>) – Y-axis limits.</p></li>
+<li><p><strong>color</strong> (<em>array-like</em><em> or </em><em>None</em>) – Scalar values used for coloring points.</p></li>
+<li><p><strong>cmap</strong> (<em>str</em>) – Matplotlib colormap name.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shapes.plot_utils.plot_shape">
+<span class="sig-prename descclassname"><span class="pre">shapes.plot_utils.</span></span><span class="sig-name descname"><span class="pre">plot_shape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">video</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/plot_utils.html#plot_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.plot_utils.plot_shape" title="Link to this definition"></a></dt>
+<dd><p>Dispatch shape plotting based on dimension and output type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="invertible_nn.html#shapes.invertible_nn.ConvexDiffeo" title="shapes.invertible_nn.ConvexDiffeo"><em>ConvexDiffeo</em></a>) – Shape-defining model.</p></li>
+<li><p><strong>output</strong> (<em>str</em>) – Output file path.</p></li>
+<li><p><strong>n_points</strong> (<em>int</em>) – Resolution of boundary sampling.</p></li>
+<li><p><strong>video</strong> (<em>bool</em>) – If True and dim=3, generate a rotating video.</p></li>
+<li><p><strong>plot_mesh</strong> (<em>bool</em>) – If True and dim=2, overlay a finite-element mesh.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shapes.plot_utils.plot_shape_2d">
+<span class="sig-prename descclassname"><span class="pre">shapes.plot_utils.</span></span><span class="sig-name descname"><span class="pre">plot_shape_2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/plot_utils.html#plot_shape_2d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.plot_utils.plot_shape_2d" title="Link to this definition"></a></dt>
+<dd><p>Plot the boundary of a 2D convex shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="invertible_nn.html#shapes.invertible_nn.ConvexDiffeo" title="shapes.invertible_nn.ConvexDiffeo"><em>ConvexDiffeo</em></a>) – 2D shape model.</p></li>
+<li><p><strong>output</strong> (<em>str</em>) – Output image path.</p></li>
+<li><p><strong>n_points</strong> (<em>int</em>) – Number of boundary samples.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shapes.plot_utils.plot_shape_3d">
+<span class="sig-prename descclassname"><span class="pre">shapes.plot_utils.</span></span><span class="sig-name descname"><span class="pre">plot_shape_3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(800,</span> <span class="pre">800)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/plot_utils.html#plot_shape_3d"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.plot_utils.plot_shape_3d" title="Link to this definition"></a></dt>
+<dd><p>Render a 3D shape using PyVista (static image).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="invertible_nn.html#shapes.invertible_nn.ConvexDiffeo" title="shapes.invertible_nn.ConvexDiffeo"><em>ConvexDiffeo</em></a>) – 3D shape model.</p></li>
+<li><p><strong>output</strong> (<em>str</em>) – Output image path.</p></li>
+<li><p><strong>n_points</strong> (<em>int</em>) – Sphere resolution.</p></li>
+<li><p><strong>window_size</strong> (<em>tuple</em>) – Rendering window size in pixels.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="shapes.plot_utils.plot_shape_3d_movie">
+<span class="sig-prename descclassname"><span class="pre">shapes.plot_utils.</span></span><span class="sig-name descname"><span class="pre">plot_shape_3d_movie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(800,</span> <span class="pre">800)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/plot_utils.html#plot_shape_3d_movie"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.plot_utils.plot_shape_3d_movie" title="Link to this definition"></a></dt>
+<dd><p>Render a rotating 3D animation of a shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="invertible_nn.html#shapes.invertible_nn.ConvexDiffeo" title="shapes.invertible_nn.ConvexDiffeo"><em>ConvexDiffeo</em></a>) – 3D shape model.</p></li>
+<li><p><strong>output</strong> (<em>str</em>) – Output video path (mp4).</p></li>
+<li><p><strong>n_points</strong> (<em>int</em>) – Sphere resolution.</p></li>
+<li><p><strong>window_size</strong> (<em>tuple</em>) – Rendering window size in pixels.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gauge_functions.html" class="btn btn-neutral float-left" title="shapes.gauge_functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="repulsion_energy.html" class="btn btn-neutral float-right" title="shapes.repulsion_energy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eloi Martinet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

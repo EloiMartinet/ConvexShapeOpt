@@ -1,0 +1,587 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shapes.invertible_nn &mdash; ConvexShapeOpt  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="shapes.gauge_functions" href="gauge_functions.html" />
+    <link rel="prev" title="API Reference" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ConvexShapeOpt
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#shapes-modules">shapes modules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">shapes.invertible_nn</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#shapes.invertible_nn.ConvexDiffeo"><code class="docutils literal notranslate"><span class="pre">ConvexDiffeo</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="gauge_functions.html">shapes.gauge_functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_utils.html">shapes.plot_utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="repulsion_energy.html">shapes.repulsion_energy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ConvexShapeOpt</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">API Reference</a></li>
+      <li class="breadcrumb-item active">shapes.invertible_nn</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/invertible_nn.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-shapes.invertible_nn">
+<span id="shapes-invertible-nn"></span><h1>shapes.invertible_nn<a class="headerlink" href="#module-shapes.invertible_nn" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">shapes.invertible_nn.</span></span><span class="sig-name descname"><span class="pre">ConvexDiffeo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symmetries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Neural parametrization of a convex diffeomorphism.</p>
+<p>This class represents a smooth diffeomorphism</p>
+<div class="math notranslate nohighlight">
+\[\varphi : B(0, 1) \subset \mathbb{R}^d \longrightarrow \Omega \subset \mathbb{R}^d\]</div>
+<p>mapping the unit ball onto a convex domain <span class="math notranslate nohighlight">\(\Omega\)</span>.
+The map is defined via a learned convex gauge function <span class="math notranslate nohighlight">\(G\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\varphi(x) = \frac{x \, \|x\|}{G(x)}\]</div>
+<p>Optionally, symmetry constraints can be enforced by averaging
+the gauge over a finite symmetry group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh_length</strong> (<em>optional</em>) – Reserved for future discretization / meshing purposes.</p></li>
+<li><p><strong>input_size</strong> (<em>int</em>) – Ambient dimension <span class="math notranslate nohighlight">\(d\)</span>.</p></li>
+<li><p><strong>n_unit</strong> (<em>int</em>) – Number of hidden units in the convex gauge network.</p></li>
+<li><p><strong>symmetries</strong> (<em>iterable</em><em> of </em><em>callables</em><em>, </em><em>optional</em>) – Group actions <span class="math notranslate nohighlight">\(g(x)\)</span> enforcing symmetry through averaging.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.center_of_gravity">
+<span class="sig-name descname"><span class="pre">center_of_gravity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.center_of_gravity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.center_of_gravity" title="Link to this definition"></a></dt>
+<dd><p>Compute the center of gravity of <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (1, d)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.dirichlet_eigenvalues">
+<span class="sig-name descname"><span class="pre">dirichlet_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_ev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_quad_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_quad_points_bd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rbf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'thin_plate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bd_penalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.dirichlet_eigenvalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.dirichlet_eigenvalues" title="Link to this definition"></a></dt>
+<dd><p>Compute Dirichlet Laplacian eigenvalues on <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>eig_vals</strong> (<em>torch.Tensor</em>)</p></li>
+<li><p><strong>eig_vecs</strong> (<em>torch.Tensor</em>)</p></li>
+<li><p><strong>sources</strong> (<em>torch.Tensor</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.evaluate_rbf_function">
+<span class="sig-name descname"><span class="pre">evaluate_rbf_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_eval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sources</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coeffs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rbf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'thin_plate'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.evaluate_rbf_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.evaluate_rbf_function" title="Link to this definition"></a></dt>
+<dd><p>Evaluate an RBF expansion</p>
+<div class="math notranslate nohighlight">
+\[u(x) = \sum_j c_j \varphi(x - y_j)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Shape <code class="docutils literal notranslate"><span class="pre">(N_eval,)</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.forward" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the diffeomorphism <span class="math notranslate nohighlight">\(\varphi(x)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">d)</span></code>. Points in the unit ball.</p></li>
+<li><p><strong>eps</strong> (<em>float</em><em>, </em><em>optional</em>) – Small stabilization constant to avoid division by zero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">d)</span></code>. Points in the target convex domain <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.gelsd_like_lstsq">
+<span class="sig-name descname"><span class="pre">gelsd_like_lstsq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rcond</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-15</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.gelsd_like_lstsq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.gelsd_like_lstsq" title="Link to this definition"></a></dt>
+<dd><p>Solve a least-squares problem using SVD (GELSD-like).</p>
+<p>This function mimics the behavior of LAPACK’s GELSD
+while remaining compatible with CUDA.</p>
+<p>Solves the problem</p>
+<div class="math notranslate nohighlight">
+\[\min \|A x - b\|_2\]</div>
+<p>and returns the minimum-norm solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">N)</span></code>.</p></li>
+<li><p><strong>b</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(M,)</span></code> or <code class="docutils literal notranslate"><span class="pre">(M,</span> <span class="pre">K)</span></code>.</p></li>
+<li><p><strong>rcond</strong> (<em>float</em>) – Relative cutoff for small singular values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shape <code class="docutils literal notranslate"><span class="pre">(N,)</span></code> or <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">K)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.generalized_sym_eig">
+<span class="sig-name descname"><span class="pre">generalized_sym_eig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps_jitter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_eigvecs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.generalized_sym_eig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.generalized_sym_eig" title="Link to this definition"></a></dt>
+<dd><p>Solve the generalized symmetric eigenproblem <span class="math notranslate nohighlight">\(Ax = \lambda M x\)</span> using Cholesky reduction.</p>
+<p>Eigenvectors are normalized in the M-inner product.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>eigvals</strong> (<em>torch.Tensor</em>)</p></li>
+<li><p><strong>eigvecs</strong> (<em>torch.Tensor</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.grad_psi">
+<span class="sig-name descname"><span class="pre">grad_psi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.grad_psi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.grad_psi" title="Link to this definition"></a></dt>
+<dd><p>Gradient of the fundamental solution with respect to <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>Computes</p>
+<div class="math notranslate nohighlight">
+\[\nabla_x \varphi(x_i - y_j)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(N_x,</span> <span class="pre">d)</span></code>.</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(N_y,</span> <span class="pre">d)</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shape <code class="docutils literal notranslate"><span class="pre">(N_x,</span> <span class="pre">N_y,</span> <span class="pre">d)</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.grad_rbf_x">
+<span class="sig-name descname"><span class="pre">grad_rbf_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rbf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'thin_plate'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.grad_rbf_x"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.grad_rbf_x" title="Link to this definition"></a></dt>
+<dd><p>Gradient of RBF with respect to x.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (N_eval, N_src(+3), d)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.integral_mean_curvature">
+<span class="sig-name descname"><span class="pre">integral_mean_curvature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.integral_mean_curvature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.integral_mean_curvature" title="Link to this definition"></a></dt>
+<dd><p>Compute <span class="math notranslate nohighlight">\(\int_{\partial \Omega} H \, dS\)</span> via change of variable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Shape <code class="docutils literal notranslate"><span class="pre">(1,)</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.jacobian">
+<span class="sig-name descname"><span class="pre">jacobian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.jacobian"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.jacobian" title="Link to this definition"></a></dt>
+<dd><p>Compute the Jacobian matrix <span class="math notranslate nohighlight">\(D\varphi(x)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">d)</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shape <code class="docutils literal notranslate"><span class="pre">(B,</span> <span class="pre">d,</span> <span class="pre">d)</span></code>. Jacobian matrices evaluated at <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.jacobian_cofactor_matrix">
+<span class="sig-name descname"><span class="pre">jacobian_cofactor_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.jacobian_cofactor_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.jacobian_cofactor_matrix" title="Link to this definition"></a></dt>
+<dd><p>Compute the cofactor (adjugate) matrix of the Jacobian.</p>
+<p>This matrix naturally appears in surface measure
+transformations under <span class="math notranslate nohighlight">\(\varphi\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (B, d, d)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.jacobian_regularizer">
+<span class="sig-name descname"><span class="pre">jacobian_regularizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">500</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.jacobian_regularizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.jacobian_regularizer" title="Link to this definition"></a></dt>
+<dd><p>Regularizer preventing Jacobian degeneracy.</p>
+<p>Returns the maximum condition number of <span class="math notranslate nohighlight">\(D\varphi(x)\)</span>
+over sampled points on the sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor (scalar)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.mean_curvature">
+<span class="sig-name descname"><span class="pre">mean_curvature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.mean_curvature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.mean_curvature" title="Link to this definition"></a></dt>
+<dd><p>Compute the mean curvature <span class="math notranslate nohighlight">\(H\)</span> at <span class="math notranslate nohighlight">\(\varphi(x)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em><em>, </em><em>shape</em><em> (</em><em>B</em><em>, </em><em>d</em><em>)</em>) – Points on the unit sphere.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch.Tensor, shape (B,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.moment_of_inertia">
+<span class="sig-name descname"><span class="pre">moment_of_inertia</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.moment_of_inertia"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.moment_of_inertia" title="Link to this definition"></a></dt>
+<dd><p>Compute the scalar moment of inertia of <span class="math notranslate nohighlight">\(\Omega\)</span>
+with respect to its center of gravity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (1,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.neumann_eigenvalues">
+<span class="sig-name descname"><span class="pre">neumann_eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_ev</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_quad_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rbf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'thin_plate'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.neumann_eigenvalues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.neumann_eigenvalues" title="Link to this definition"></a></dt>
+<dd><p>Compute Neumann Laplacian eigenvalues on <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>eig_vals</strong> (<em>torch.Tensor</em>)</p></li>
+<li><p><strong>eig_vecs</strong> (<em>torch.Tensor</em>)</p></li>
+<li><p><strong>sources</strong> (<em>torch.Tensor</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.normal">
+<span class="sig-name descname"><span class="pre">normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.normal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.normal" title="Link to this definition"></a></dt>
+<dd><p>Compute the outward unit normal at <span class="math notranslate nohighlight">\(\varphi(x)\)</span>,
+where <span class="math notranslate nohighlight">\(x\)</span> lies on the unit sphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>torch.Tensor</em><em>, </em><em>shape</em><em> (</em><em>B</em><em>, </em><em>d</em><em>)</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch.Tensor, shape (B, d)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.perimeter">
+<span class="sig-name descname"><span class="pre">perimeter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.perimeter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.perimeter" title="Link to this definition"></a></dt>
+<dd><p>Estimate of the surface area <span class="math notranslate nohighlight">\(|\partial \Omega|\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (1,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.psi">
+<span class="sig-name descname"><span class="pre">psi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.psi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.psi" title="Link to this definition"></a></dt>
+<dd><p>Fundamental solution of the Laplacian.</p>
+<p>Constructs the matrix</p>
+<div class="math notranslate nohighlight">
+\[\left[ \varphi(x_i - y_j) \right]_{i,j}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varphi\)</span> is the fundamental solution of the Laplacian in <span class="math notranslate nohighlight">\(\mathbb{R}^d\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\varphi(r) =
+\begin{cases}
+-\log |r|, &amp; d = 2 \\
+|r|^{2-d}, &amp; d \ge 3
+\end{cases}\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(N_x,</span> <span class="pre">d)</span></code>. Evaluation points.</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(N_y,</span> <span class="pre">d)</span></code>. Source points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shape <code class="docutils literal notranslate"><span class="pre">(N_x,</span> <span class="pre">N_y)</span></code>. Pairwise evaluations of <span class="math notranslate nohighlight">\(\varphi(x_i - y_j)\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.rbf">
+<span class="sig-name descname"><span class="pre">rbf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rbf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'thin_plate'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.rbf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.rbf" title="Link to this definition"></a></dt>
+<dd><p>Evaluate radial basis functions <span class="math notranslate nohighlight">\(\varphi(|x - y|)\)</span>.</p>
+<p>Supports several kernels:
+- Gaussian
+- Multiquadric
+- Inverse multiquadric
+- Thin-plate spline
+- Wendland C²</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>RBF matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.sample_ball">
+<span class="sig-name descname"><span class="pre">sample_ball</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.sample_ball"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.sample_ball" title="Link to this definition"></a></dt>
+<dd><p>Sample points uniformly inside the unit ball B(0,1).</p>
+<p>Sampling is performed by rejection from the hypercube [-1,1]^d.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_points</strong> (<em>int</em>) – Approximate number of accepted samples.</p></li>
+<li><p><strong>requires_grad</strong> (<em>bool</em>) – Whether returned points require gradients.</p></li>
+<li><p><strong>random</strong> (<em>bool</em>) – If True, sample randomly; otherwise use a Cartesian grid.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Points inside the unit ball.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (N, d)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.sample_sphere">
+<span class="sig-name descname"><span class="pre">sample_sphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1073</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requires_grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.sample_sphere"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.sample_sphere" title="Link to this definition"></a></dt>
+<dd><p>Sample points uniformly on the unit sphere S^{d-1}.</p>
+<p>Sampling strategy depends on the dimension:
+- 2D: exact angular parametrization
+- 3D: Fibonacci lattice
+- d&gt;3: projection from the unit ball</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_points</strong> (<em>int</em>) – Number of sampled points.</p></li>
+<li><p><strong>requires_grad</strong> (<em>bool</em>) – Whether returned points require gradients.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Points on the unit sphere.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (N, d)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.torsional_rigidity">
+<span class="sig-name descname"><span class="pre">torsional_rigidity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.002</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sources_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_grid</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.torsional_rigidity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.torsional_rigidity" title="Link to this definition"></a></dt>
+<dd><p>Compute torsional rigidity using adaptive parameter search.</p>
+<p>A grid search is performed over:
+- number of sources
+- offset distance outside the domain</p>
+<p>until the relative boundary error is below <cite>tol</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_points</strong> (<em>int</em>) – Number of quadrature points.</p></li>
+<li><p><strong>tol</strong> (<em>float</em>) – Target relative boundary error.</p></li>
+<li><p><strong>n_sources_grid</strong> (<em>list</em><em>[</em><em>int</em><em>]</em><em>, </em><em>optional</em>) – Candidate numbers of sources.</p></li>
+<li><p><strong>offset_grid</strong> (<em>list</em><em>[</em><em>float</em><em>]</em><em>, </em><em>optional</em>) – Candidate source offsets.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Estimated torsional rigidity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (1,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.torsional_rigidity_">
+<span class="sig-name descname"><span class="pre">torsional_rigidity_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.torsional_rigidity_"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.torsional_rigidity_" title="Link to this definition"></a></dt>
+<dd><p>Compute torsional rigidity for fixed parameters.</p>
+<p>Solves the Poisson problem</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+-\Delta u = 1 &amp; \text{in } \Omega, \\
+u = 0 &amp; \text{on } \partial\Omega
+\end{cases}\end{split}\]</div>
+<p>using a boundary collocation method with Green functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>torsion</strong> (<em>torch.Tensor</em>) – Shape <code class="docutils literal notranslate"><span class="pre">(1,)</span></code>.</p></li>
+<li><p><strong>rel_err</strong> (<em>torch.Tensor</em>) – Relative boundary error.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.volume"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.volume" title="Link to this definition"></a></dt>
+<dd><p>Estimate of the volume <span class="math notranslate nohighlight">\(|\Omega|\)</span>.</p>
+<p>Uses the change-of-variables formula:</p>
+<div class="math notranslate nohighlight">
+\[|\Omega| = \int_{B} \left| \det D\varphi(x) \right| \, \mathrm{d}x\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Shape <code class="docutils literal notranslate"><span class="pre">(1,)</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>torch.Tensor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="shapes.invertible_nn.ConvexDiffeo.willmore_energy">
+<span class="sig-name descname"><span class="pre">willmore_energy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_points</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shapes/invertible_nn.html#ConvexDiffeo.willmore_energy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#shapes.invertible_nn.ConvexDiffeo.willmore_energy" title="Link to this definition"></a></dt>
+<dd><p>Compute the Willmore energy <span class="math notranslate nohighlight">\(\int_{\partial \Omega} H^2 \, dS\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>torch.Tensor, shape (1,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gauge_functions.html" class="btn btn-neutral float-right" title="shapes.gauge_functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Eloi Martinet.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

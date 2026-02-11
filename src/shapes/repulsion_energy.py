@@ -6,28 +6,38 @@ def repulsion_energy(x, s=1.0):
     Compute the total Riesz (electrostatic) repulsion energy
     of a system of particles.
 
-    Given particle positions x = (x₁, …, x_N) ⊂ ℝᵈ, the energy is
+    Given particle positions :math:`x = (x_1, \\dots, x_N) \\subset \\mathbb{R}^d`,
+    the energy is
 
-        E(x) = (1 / N²) ∑_{i≠j} φ_s(|x_i - x_j|)
+    .. math::
+
+        E(x) = \\frac{1}{N^2} \\sum_{i \\neq j} \\varphi_s(\\|x_i - x_j\\|)
 
     where the interaction kernel is:
-        - s = 0 : φ₀(r) = −log(r)     (2D Coulomb / logarithmic potential)
-        - s > 0 : φ_s(r) = r^{-s}    (Riesz potential)
 
-    Self-interactions (i = j) are excluded.
+    .. math::
+
+        \\varphi_s(r) =
+        \\begin{cases}
+        -\\log(r), & s = 0 \\\\
+        r^{-s}, & s > 0
+        \\end{cases}
+
+    Self-interactions :math:`i = j` are excluded.
 
     Parameters
     ----------
-    x : torch.Tensor, shape (N, d)
-        Particle positions.
+    x : torch.Tensor
+        Shape ``(N, d)``. Particle positions.
     s : float, optional
-        Riesz exponent. Use s=0 for logarithmic interaction.
+        Riesz exponent. Use ``s = 0`` for logarithmic interaction.
 
     Returns
     -------
-    torch.Tensor (scalar)
-        Mean pairwise repulsion energy.
+    torch.Tensor
+        Scalar mean pairwise repulsion energy.
     """
+
     device, dtype = x.device, x.dtype
 
     # Pairwise differences: (N, N, d)
@@ -58,23 +68,26 @@ def pointwise_repulsion_energy(x, s=1.0):
     """
     Compute pointwise Riesz repulsion energies.
 
-    For each particle x_i, this returns its average interaction
+    For each particle :math:`x_i`, this returns its average interaction
     with all other particles:
 
-        E_i(x) = (1 / N) ∑_{j≠i} φ_s(|x_i - x_j|)
+    .. math::
+
+        E_i(x) = \\frac{1}{N} \\sum_{j \\neq i} \\varphi_s\\!\\left(\\|x_i - x_j\\|\\right)
 
     Parameters
     ----------
-    x : torch.Tensor, shape (N, d)
-        Particle positions.
+    x : torch.Tensor
+        Shape ``(N, d)``. Particle positions.
     s : float, optional
-        Riesz exponent (s=0 gives logarithmic interaction).
+        Riesz exponent. Use :math:`s = 0` for logarithmic interaction.
 
     Returns
     -------
-    torch.Tensor, shape (N,)
-        Repulsion energy associated with each particle.
+    torch.Tensor
+        Shape ``(N,)``. Repulsion energy associated with each particle.
     """
+
     device, dtype = x.device, x.dtype
 
     diff = x.unsqueeze(1) - x.unsqueeze(0)
