@@ -11,12 +11,12 @@ Disclaimer: this repository is linked to the paper [link]. One should first read
 
 1. Clone the repository
 ```bash
-git clone https://github.com/username/weather-app.git
+git clone https://github.com/EloiMartinet/ConvexShapeOpt
 ```
 
 2. Go to the project folder
 ```bash
-cd folder
+cd ConvexShapeOpt
 ```
 
 3. Install dependencies
@@ -76,5 +76,10 @@ The file `src/shapes/repulsion_energy.py` only implements a simple Riesz potenti
 
 ## Documentation
 
+
 ## Cite
+
+
 ## License
+
+This project is under the MIT License
