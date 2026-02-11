@@ -35,8 +35,9 @@ html_static_path = ['_static']
 #-- I add this becaus ChatGPT told me to ----
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../src'))
 
+# Add src folder to sys.path so "shapes" can be imported
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
 # Mock imports
 autodoc_mock_imports = [
