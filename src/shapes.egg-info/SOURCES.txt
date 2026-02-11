@@ -1,0 +1,11 @@
+setup.py
+src/shapes/__init__.py
+src/shapes/gauge_functions.py
+src/shapes/invertible_nn.py
+src/shapes/plot_utils.py
+src/shapes/repulsion_energy.py
+src/shapes.egg-info/PKG-INFO
+src/shapes.egg-info/SOURCES.txt
+src/shapes.egg-info/dependency_links.txt
+src/shapes.egg-info/requires.txt
+src/shapes.egg-info/top_level.txt
