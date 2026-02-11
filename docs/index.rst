@@ -6,14 +6,11 @@
 ConvexShapeOpt documentation
 ============================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+Documentation for the `ConvexShapeOpt <https://github.com/EloiMartinet/ConvexShapeOpt>` library. Please visit the GitHub for more information.
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   api/index
-   tutorials/index
+   api
+   tutorials

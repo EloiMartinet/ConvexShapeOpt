@@ -158,8 +158,7 @@ Please refer to the paper for further details.
 
 ## :open_book: Documentation
 
-Documentation is currently minimal.  
-Please refer to the paper and the example scripts for guidance.
+Documentation is available here: https://convexshapeopt.readthedocs.io/en/latest/index.html
 
 ---
 
