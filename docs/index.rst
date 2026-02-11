@@ -14,4 +14,4 @@ I wanted to put a link in my index.rst like that: Documentation for the `ConvexS
    :caption: Contents:
 
    api
-   tutorials/index
+   tutorials
