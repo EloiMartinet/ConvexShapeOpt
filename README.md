@@ -1,85 +1,177 @@
-# Convex shape optimization using neural networks
+![Convex Shape Optimization](header.png)
 
-This repository implements a way to perform shape optimization among convex sets using neural networks. The approac is then used to numerically explore *Blashcke-Santalò diagrams*, i.e. the image of shape functionals.
+# Convex Shape Optimization with Neural Networks
 
-This library is implemented almost fully in PyTorch, with few dependencies. 
+This repository implements a framework for **shape optimization over convex sets** using **neural networks**. The approach is then used to numerically explore **Blaschke–Santalò diagrams**, i.e. the image of shape functionals under convexity constraints.
 
-Disclaimer: this repository is linked to the paper [link]. One should first read the paper before trying to run this code.
+The library is implemented almost entirely in **PyTorch**, with only a few lightweight dependencies.
 
+> **Disclaimer**  
+> This repository is linked to the paper **[link]**. It is strongly recommended to read the paper before running or modifying the code.
+
+---
 
 ## Installation
 
-1. Clone the repository
+### 1. Clone the repository
 ```bash
 git clone https://github.com/EloiMartinet/ConvexShapeOpt
 ```
 
-2. Go to the project folder
+### 2. Move to the project directory
 ```bash
 cd ConvexShapeOpt
 ```
 
-3. Install dependencies
+### 3. Install dependencies
 ```bash
 pip install matplotlib numpy pyvista fiblat
 ```
-For the PyTorch install, please consult https://pytorch.org/get-started/locally/ to get the more suitable installation for you. Cuda is recommended for running the Blaschke-Santalò-related scripts, but the example scripts (simple shape optimization problems) runs well on CPU.
 
-Once you installed everything, run
+For **PyTorch**, please consult the official installation guide:  
+https://pytorch.org/get-started/locally/
+
+> **Note**  
+> CUDA is recommended for running the Blaschke–Santalò scripts.  
+> The example scripts (simple shape optimization problems) run well on CPU.
+
+Finally, install the package in editable mode:
 ```bash
 pip install -e .
 ```
 
+---
 
 ## Usage
 
-In the main folder, execute
+### Example: Isoperimetric Problem
+
+From the root directory, run:
 ```bash
 python3 examples/isoperimetric.py
 ```
-This code simulates the minimization of perimeter of a convex set of unit measure. If the installation went ok, you should see the shapes at each iteration under the folder `res/isoperimetric`, that hopefully converges to a ball. I encourage you to open the file to see how simple it is ! You can also, for instance, change the variable `DIM` from `2`to `3` to perform 3d shape optimization.
 
-The Blaschke-Santalò scripts are under the `scripts/` folder. For instance, you can run
+This script simulates the minimization of the **perimeter** of a convex set with **unit measure**.
+
+If the installation is successful, intermediate shapes are saved in:
+```
+res/isoperimetric/
+```
+
+The shapes should converge toward a **ball**.  
+You are encouraged to open the script to see how simple it is to modify. For instance, changing
+```python
+DIM = 2
+```
+to
+```python
+DIM = 3
+```
+runs the same optimization in 3D.
+
+---
+
+### Blaschke–Santalò Diagrams
+
+The scripts generating Blaschke–Santalò diagrams are located in the `scripts/` folder.
+
+For example:
 ```bash
 python3 scripts/diagram_APW_2d.py
 ```
-which run the diagram of volume, perimeter and moment of inertia. The picture of the diagram at each iteration should be under `res/APW_2d/`. The images of the shapes and a csv file with the corresponding values are under the folder `res/APW_2d/shapes/`, while the models are saved under `res/APW_2d/models/`. 
 
+This computes the diagram involving **area, perimeter, and moment of inertia** in 2D.
 
-In order to visualize the convex sets on the diagram, you can use the `plot_diagram.html` file. First, from the root folder, execute
+Results are organized as:
+```
+res/APW_2d/
+├── shapes/     # Shape images and CSV of functional values
+├── models/     # Saved neural network models
+└── *.png       # Diagram snapshots
+```
+
+---
+
+### Interactive Visualization
+
+To visualize convex sets directly on the diagram, use the provided HTML tool.
+
+From the root directory:
 ```bash
 python3 -m http.server 8000
 ```
-then open your browser at http://localhost:8000/plot_diagram.html?folder=res/APW_2d/shapes.
 
+Then open:
+```
+http://localhost:8000/plot_diagram.html?folder=res/APW_2d/shapes
+```
 
-## Code structure
+---
 
-The main file is `src/shapes/invertible_nn.py`. It implements the main model, `ConvexDiffeo`, of which the `fowrad` method is a diffeomorphism from the ball to a convex set. It relies on the gauge function of a smoothed polygon, implemented in the class `LSEGauge` in the file `src/shapes/gauge_functions.py`
+## Code Structure
 
-It also implements various geometric and spectral shape quantities as:
-- Volume
-- Perimeter
-- Normal vector
-- Mean curvature
-- Willmore energy
-- Integral mean curvature
-- Torsional rigidity
-- Dirichlet and Neumann eigenvalues
+The core of the library is located in:
+```
+src/shapes/invertible_nn.py
+```
 
-The computation of these quantites takes great advantage of PyTorch's automatic differentiation. Please consult the paper for more information.
+It implements the main model, **`ConvexDiffeo`**, whose `forward` method defines a **diffeomorphism from the unit ball to a convex set**.
 
-WARNING: Use double precision for computing PDE-related quantities.
+This relies on the gauge function of a smoothed polygon, implemented in:
+```
+src/shapes/gauge_functions.py
+```
+via the `LSEGauge` class.
 
-The file `src/shapes/repulsion_energy.py` only implements a simple Riesz potential, that is used in all the scripts. The `src/shapes/plot_utils.py` file implements some plotting routines in 2 and 3 dimensions.
+---
 
+### Implemented Shape Quantities
+
+The library includes differentiable implementations of the following quantities:
+
+- Volume  
+- Perimeter  
+- Normal vector  
+- Mean curvature  
+- Willmore energy  
+- Integral mean curvature  
+- Torsional rigidity  
+- Dirichlet and Neumann eigenvalues  
+
+These computations heavily leverage **PyTorch automatic differentiation**.  
+Please refer to the paper for further details.
+
+> **Warning**  
+> Use **double precision (`float64`)** for PDE-related quantities.
+
+---
+
+### Additional Modules
+
+- `src/shapes/repulsion_energy.py`  
+  Implements a simple **Riesz potential**, used throughout the scripts.
+
+- `src/shapes/plot_utils.py`  
+  Plotting utilities for **2D and 3D** visualization.
+
+---
 
 ## Documentation
 
+Documentation is currently minimal.  
+Please refer to the paper and the example scripts for guidance.
 
-## Cite
+---
 
+## Citation
+
+If you use this code, please cite:
+```
+[Paper citation here]
+```
+
+---
 
 ## License
 
-This project is under the MIT License
+This project is released under the **MIT License**.
