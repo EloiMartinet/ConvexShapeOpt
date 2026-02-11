@@ -185,7 +185,7 @@ Documentation is available here: https://convexshapeopt.readthedocs.io/en/latest
 
 If you use this code, please cite:
 ```
-[Paper citation here]
+[Paper will be out soon]
 ```
 
 ---
