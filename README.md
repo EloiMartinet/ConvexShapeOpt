@@ -7,7 +7,7 @@ This repository implements a framework for **shape optimization over convex sets
 The library is implemented almost entirely in **PyTorch**, with only a few lightweight dependencies.
 
 > **Disclaimer**  
-> This repository is linked to the paper **[link]**. It is strongly recommended to read the paper before running or modifying the code.
+> This repository is linked to the paper **[Numerical exploration of the range of shape functionals using neural networks](https://www.arxiv.org/abs/2602.14881)**. It is strongly recommended to read the paper before running or modifying the code.
 
 ---
 
@@ -185,7 +185,15 @@ Documentation is available here: https://convexshapeopt.readthedocs.io/en/latest
 
 If you use this code, please cite:
 ```
-[Paper will be out soon]
+@misc{martinet2026numericalexplorationrangeshape,
+      title={Numerical exploration of the range of shape functionals using neural networks}, 
+      author={Eloi Martinet and Ilias Ftouhi},
+      year={2026},
+      eprint={2602.14881},
+      archivePrefix={arXiv},
+      primaryClass={math.OC},
+      url={https://arxiv.org/abs/2602.14881}, 
+}
 ```
 
 ---
