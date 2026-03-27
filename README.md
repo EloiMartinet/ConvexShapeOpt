@@ -122,7 +122,7 @@ python3 -m http.server 8000
 
 Then open:
 ```
-http://localhost:8000/plot_diagram.html?folder=res/APW_2d/shapes
+http://localhost:8000/plot_diagram.html?folder=scripts/res/APW_2d/shapes
 ```
 
 ---
