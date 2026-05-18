@@ -1,6 +1,6 @@
 ![Convex Shape Optimization](header.png)
 
-# Convex Shape Optimization with Neural Networks
+# Numerical exploration of Blaschke-Santaló diagrams using Neural Networks
 
 This repository implements a framework for **shape optimization over convex sets** using **neural networks**. The approach is then used to numerically explore **Blaschke–Santalò diagrams**, i.e. the image of shape functionals under convexity constraints.
 
